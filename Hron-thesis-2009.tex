@@ -55,21 +55,19 @@
  % \newcommand{\efig}{\end{center}\end{figure}}
  % umoznuje pouzit prikaz \bfig namisto \begin{figure}\begin{center} atd.
 
-\usepackage[]{nomencl} 							% umožňuje snadno definovat zkratky a jejich seznam
+\usepackage{nomencl} 							% umožňuje snadno definovat zkratky a jejich seznam
 \makenomenclature								% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
 \newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
 \newcommand*{\nom}[2]{#1 \nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : SZ
 
-\makeatletter
+\makeatletter								% upravuje výpis seznam zkratek
 \renewcommand{\thenomenclature}{%
   \@ifundefined{chapter}%
   {
     \section{\nomname}
-    \if@intoc\addcontentsline{toc}{section}{\nomname}\fi%
-  }%
+   }%
   {
     \chapter{\nomname}
-    \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
   }%
 
   \nompreamble
@@ -556,7 +554,10 @@ Refine by  undo_reg (email1 h)
 \end{verbatim}
 
 \section{Zkratky}
-V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimensional} nebo \nomExpl{KNB}{Killing nanobots}. Všechny tyto zkratky se mi pak vytisknou podle abecedy \nom{ABC}{Zkratka pro abecedu} v příloze \ref{apx:zkratky}.
+V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimensional} nebo \nomExpl{KNB}{Killing nanobots}. Všechny tyto zkratky se mi pak vytisknou podle abecedy \nom{ABC}{Zkratka pro abecedu} v příloze \ref{apx:zkratky}, aby toto fungovalo musíte přeložit soubor se zkratkami pomocí příkazu:
+\begin{verbatim}
+		makeindex soubor.nlo -s nomencl.ist -o soubor.nls
+\end{verbatim}
 
 \section{Další poznámky}
 \subsection{České uvozovky}
