@@ -81,6 +81,9 @@
 
 \usepackage{listings} %slouží pro tisk zdrojových kódů se syntax higlighting
 
+\usepackage{algorithmicx} 	%slouží pro zápis algoritmů
+\usepackage{algpseudocode} 	%slouží pro výpis pseudokódu
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Zvolte jednu z moznosti 
 % Choose one of the following options
@@ -534,7 +537,8 @@ je potom vysázen takto:
   V = \pi * r^3
 \end{equation}
 
-\section{Kódy programu}
+\section{Kódy a algoritmy}
+\subsection{Zdrojové kódy}
 Chceme-li vysázet například část zdrojového kódu programu, hodí se prostředí \verb|verbatim|, které je bez formátování: 
 \begin{verbatim}
          (* nickname2 *)
@@ -564,14 +568,27 @@ a umožňuje načíst i přiložené zdrojové soubory:
 
 \lstinputlisting[language=C]{code/hello.c}
 
+\subsection{Algoritmy}
+Pokud chcete v práci popsat obecné algoritmy s využitím pseudokódu, můžete použít knihovny \verb|algorithmicx| a \verb|algpseudocode|:
+\begin{algorithmic}
+\If {$i\geq maxval$}
+    \State $i\gets 0$
+\Else
+    \If {$i+k\leq maxval$}
+        \State $i\gets i+k$
+    \EndIf
+\EndIf
+\end{algorithmic}
+
 \section{Zkratky}
-V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimensional} nebo \nomExpl{KNB}{Killing nanobots}. V úvodní části dokumentu můžete nastavit/upravit příkaz pro zadání zkratky, pokud např. chcete mít význam zkratky pod čarou. Všechny zkratky se vytisknou podle abecedy \nom{ABC}{Zkratka pro abecedu} v příloze \ref{apx:zkratky}, aby toto fungovalo musíte vybudovat index pomocí příkazu:
+V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimensional} nebo \nomExpl{KNB}{Killing nanobots}. V úvodní části dokumentu můžete nastavit/upravit příkaz pro zadání zkratky, pokud např. chcete mít význam zkratky pod čarou. Všechny zkratky se vytisknou podle abecedy (\nom{ABC}{Zkratka pro abecedu}) v příloze \ref{apx:zkratky}, aby toto fungovalo musíte vybudovat index pomocí příkazu:
 \begin{verbatim}
 		makeindex soubor.nlo -s nomencl.ist -o soubor.nls
 \end{verbatim}
 
-\section{Další poznámky}
-\subsection{České uvozovky}
+
+
+\section{České uvozovky}
 V souboru \verb|k336_thesis_macros.tex| je příkaz \verb|\uv{}| pro sázení českých uvozovek. \uv{Text uzavřený do českých uvozovek.}
 
 
