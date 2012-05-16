@@ -79,7 +79,7 @@
     \let\makelabel\nomlabel}}
 \makeatother
 
-
+\usepackage{listings} %slouží pro tisk zdrojových kódů se syntax higlighting
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Zvolte jednu z moznosti 
@@ -535,7 +535,7 @@ je potom vysázen takto:
 \end{equation}
 
 \section{Kódy programu}
-Chceme-li vysázet například část zdrojového kódu programu (bez formátování), hodí se prostředí \verb|verbatim|: 
+Chceme-li vysázet například část zdrojového kódu programu, hodí se prostředí \verb|verbatim|, které je bez formátování: 
 \begin{verbatim}
          (* nickname2 *)
 Lego> Refine in1
@@ -553,8 +553,19 @@ Refine by  undo_reg (email1 h)
 *** QED ***
 \end{verbatim}
 
+nebo se dá použít \verb|listings|, což je package, který umožňuje i syntax higlighting podle jazyka:
+
+\lstset{language=Python} %následuje python kód a použije se python syntax
+\begin{lstlisting}
+	print 'Hello, world!'
+\end{lstlisting}
+
+a umožňuje načíst i přiložené zdrojové soubory:
+
+\lstinputlisting[language=C]{code/hello.c}
+
 \section{Zkratky}
-V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimensional} nebo \nomExpl{KNB}{Killing nanobots}. Všechny tyto zkratky se mi pak vytisknou podle abecedy \nom{ABC}{Zkratka pro abecedu} v příloze \ref{apx:zkratky}, aby toto fungovalo musíte přeložit soubor se zkratkami pomocí příkazu:
+V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimensional} nebo \nomExpl{KNB}{Killing nanobots}. V úvodní části dokumentu můžete nastavit/upravit příkaz pro zadání zkratky, pokud např. chcete mít význam zkratky pod čarou. Všechny zkratky se vytisknou podle abecedy \nom{ABC}{Zkratka pro abecedu} v příloze \ref{apx:zkratky}, aby toto fungovalo musíte vybudovat index pomocí příkazu:
 \begin{verbatim}
 		makeindex soubor.nlo -s nomencl.ist -o soubor.nls
 \end{verbatim}
