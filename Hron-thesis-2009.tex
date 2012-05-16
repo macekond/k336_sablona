@@ -296,17 +296,7 @@ Očekávají se cca 1 -- 2 odstavce, maximálně půl stránky.
 % Chcete-li selektivne zamezit odsazeni 1. radku nektereho odstavce,
 % pouzijte prikaz \noindent.
 
-%**************************************************************
 
-% Pro snadnejsi praci s vetsimi texty je rozumne tyto rozdelit
-% do samostatnych souboru nejlepe dle kapitol a tyto potom vkladat
-% pomoci prikazu \include{jmeno_souboru.tex} nebo \include{jmeno_souboru}.
-% Napr.:
-% \include{1_uvod}
-% \include{2_teorie}
-% atd...
-
-%*****************************************************************************
 \chapter{Úvod}
 Úvod charakterizující kontext zadání, případně motivace.
 
@@ -322,36 +312,19 @@ Používat se dají všechny příkazy systému \LaTeX. Existuje velké množstv
 Existují i různé nadstavby nad systémy \TeX{} a \LaTeX, které výrazně usnadní psaní textu zejména začátečníkům. Velmi rozšířený v Linuxovém prostředí je systém Kile.
 
 
-\section{Vkládání obrázků}
-Obrázky se umísťují do plovoucího prostředí \verb|figure|. Každý obrázek by měl obsahovat \textbf{název} (\verb|\caption|) a \textbf{návěští} (\verb|\label|). Použití příkazu pro vložení obrázku \\\verb|\includegraphics| je podmíněno aktivací (načtením) balíku graphicx příkazem\\ \verb|\usepackage{graphicx}|.
+%**************************************************************
 
-Budete-li zdrojový text zpracovávat pomocí programu \verb|pdflatex|, očekávají se obrázky s příponou \verb|*.pdf|\footnote{pdflatex umí také formáty PNG a JPG.}, použijete-li k formátování \verb|latex|, očekávají se obrázky s příponou \verb|*.eps|.\footnote{Vzájemnou konverzi mezi snad všemi typy obrazku včetně změn vekostí a dalších vymožeností vám může zajistit balík ImageMagic  (http://www.imagemagick.org/script/index.php). Je dostupný pod Linuxem, Mac OS i MS Windows. Důležité jsou zejména příkazy convert a identify.}
+% Pro snadnejsi praci s vetsimi texty je rozumne tyto rozdelit
+% do samostatnych souboru nejlepe dle kapitol a tyto potom vkladat
+% pomoci prikazu \include{jmeno_souboru}.
+% Napr.:
+% \include{1_uvod}
+% \include{2_teorie}
+% atd...
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=5cm]{figures/LogoCVUT}
-\caption{Popiska obrázku}
-\label{fig:logo}
-\end{center}
-\end{figure}
+%*****************************************************************************
 
-Příklad vložení obrázku:
-\begin{verbatim}
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=5cm]{figures/LogoCVUT}
-\caption{Popiska obrazku}
-\label{fig:logo}
-\end{center}
-\end{figure}
-\end{verbatim}
-
-\section{Kreslení obrázků}
-Zřejmě každý z vás má nějaký oblíbený nástroj pro tvorbu obrázků. Jde jen o to, abyste dokázali obrázek uložit v požadovaném formátu nebo jej do něj konvertovat (viz předchozí kapitola). Je zřejmě vhodné kreslit obrázky vektorově. Celkem oblíbený, na ovládání celkem jednoduchý a přitom dostatečně mocný je například program Inkscape.
-
-Zde stojí za to upozornit na kreslící programe Ipe \cite{ipe}, který dokáže do obrázku vkládat komentáře přímo v latexovském formátu (vzroce, stejné fonty atd.). Podobné věci umí na Linuxové platformě nástroj Xfig. 
-
-Za pozornost ještě stojí schopnost editoru Ipe importovat obrázek (jpg nebo bitmap) a krelit do něj latexovské popisky a komentáře. Výsledek pak umí exportovat přímo do pdf.
+\include{obrazky}
 
 \section{Tabulky}
 Existuje více způsobů, jak sázet tabulky. Například je možno použít prostředí \verb|table|, které je velmi podobné prostředí \verb|figure|. 
@@ -585,8 +558,6 @@ V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimen
 \begin{verbatim}
 		makeindex soubor.nlo -s nomencl.ist -o soubor.nls
 \end{verbatim}
-
-
 
 \section{České uvozovky}
 V souboru \verb|k336_thesis_macros.tex| je příkaz \verb|\uv{}| pro sázení českých uvozovek. \uv{Text uzavřený do českých uvozovek.}

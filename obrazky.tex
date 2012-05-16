@@ -1,0 +1,35 @@
+\section{Obrázky}
+Obrázky jsou vhodným nástrojem pro ilustraci a doplnění textu, používejte je v rozumné míře ať vaše práce nepřipomíná komix. Při hledání/tvorbě obrázků nezapomeňte na to, že u přejatých obrázků musíte odkazovat jejich zdroj a že obrázky by měly být čitelné (typicky .jpg soubory se často rozostří). Dalším častým neduhem jsou obrázky s anglickými popisky v česky psaném textu, pokud to je možné udržte jazyk práce jednotný.
+
+\subsection{Vkládání obrázků}
+Obrázky se umísťují do plovoucího prostředí \verb|figure|. Každý obrázek by měl obsahovat \textbf{název} (\verb|\caption|) a \textbf{návěští} (\verb|\label|). Použití příkazu pro vložení obrázku \\\verb|\includegraphics| je podmíněno aktivací (načtením) balíku graphicx příkazem\\ \verb|\usepackage{graphicx}|.
+
+Budete-li zdrojový text zpracovávat pomocí programu \verb|pdflatex|, očekávají se obrázky s příponou \verb|*.pdf|\footnote{pdflatex umí také formáty PNG a JPG.}, použijete-li k formátování \verb|latex|, očekávají se obrázky s příponou \verb|*.eps|.\footnote{Vzájemnou konverzi mezi snad všemi typy obrazku včetně změn vekostí a dalších vymožeností vám může zajistit balík ImageMagic  (http://www.imagemagick.org/script/index.php). Je dostupný pod Linuxem, Mac OS i MS Windows. Důležité jsou zejména příkazy convert a identify.}
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=5cm]{figures/LogoCVUT}
+\caption{Popiska obrázku}
+\label{fig:logo}
+\end{center}
+\end{figure}
+
+Příklad vložení obrázku:
+\begin{verbatim}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=5cm]{figures/LogoCVUT}
+\caption{Popiska obrazku}
+\label{fig:logo}
+\end{center}
+\end{figure}
+\end{verbatim}
+
+\subsection{Kreslení obrázků}
+Zřejmě každý z vás má nějaký oblíbený nástroj pro tvorbu obrázků. Jde jen o to, abyste dokázali obrázek uložit v požadovaném formátu nebo jej do něj konvertovat (viz předchozí kapitola). Je zřejmě vhodné kreslit obrázky vektorově. Celkem oblíbený, na ovládání celkem jednoduchý a přitom dostatečně mocný je například program Inkscape.
+
+Zde stojí za to upozornit na kreslící programe Ipe \cite{ipe}, který dokáže do obrázku vkládat komentáře přímo v latexovském formátu (vzroce, stejné fonty atd.). Podobné věci umí na Linuxové platformě nástroj Xfig. 
+
+Za pozornost ještě stojí schopnost editoru Ipe importovat obrázek (jpg nebo bitmap) a krelit do něj latexovské popisky a komentáře. Výsledek pak umí exportovat přímo do pdf.
+
+Další možností je knihovna graphviz, které vykreslí obrázek podle vašeho popisu (kódu), výstup je možný do mnoha formátů (.eps, .jpg, ...).
