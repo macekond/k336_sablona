@@ -6,6 +6,8 @@
 % Pavel Tvrdik  (17.12.2004)
 %
 % Michal Valenta (7.5. 2008)
+%
+% Ondřej Macek (30.5. 2012)
 
 %preamble declarations
 
@@ -80,7 +82,10 @@
 
 \newcommand\mainbodystarts{
 \cleardoublepage
-\pagestyle{headings}\pagenumbering{arabic}\setcounter{page}{1}
+\fancyhead{} % clear all header fields
+\fancyhead[LE]{\slshape \leftmark}
+\fancyhead[RO]{\slshape \rightmark }
+\pagestyle{fancy}\pagenumbering{arabic}\setcounter{page}{1}
 }
 
 %A list of user hyphenations.
