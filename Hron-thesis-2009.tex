@@ -1,148 +1,32 @@
-%% History:
-% Pavel Tvrdik (26.12.2004)
-%  + initial version for PhD Report
-%
-% Daniel Sykora (27.01.2005)
-%
-% Michal Valenta (3.12.2008)
-% rada zmen ve formatovani (diky M. Duškovi, J. Holubovi a J. Žďárkovi)
-% sjednoceni zdrojoveho kodu pro anglickou, ceskou, bakalarskou a diplomovou praci
-% 
-% JZ (3.5.2009)
-% řada komentářů
-%
-% Ondřej Macek (14.4.2012)
-% uprava pro seznam zkratek 
-
-% One-page layout: (proof-)reading on display
-%%%% \documentclass[11pt,oneside,a4paper]{book}
-% Two-page layout: final printing
-\documentclass[11pt,twoside,a4paper]{book}   
-%=-=-=-=-=-=-=-=-=-=-=-=--=%
-% The user of this template may find useful to have an alternative to these 
-% officially suggested packages:
+\documentclass[11pt,twoside,a4paper]{book}  
+% definice dokumentu
 \usepackage[czech, english]{babel}
-\usepackage[T1]{fontenc} % pouzije EC fonty 
-% pripadne pisete-li cesky, pak lze zkusit take:
-% \usepackage[OT1]{fontenc} 
-\usepackage[utf8]{inputenc}
-%=-=-=-=-=-=-=-=-=-=-=-=--=%
-% In case of problems with PDF fonts, one may try to uncomment this line:
-%\usepackage{lmodern}
-%=-=-=-=-=-=-=-=-=-=-=-=--=%
-%=-=-=-=-=-=-=-=-=-=-=-=--=%
-% Depending on your particular TeX distribution and version of conversion tools 
-% (dvips/dvipdf/ps2pdf), some (advanced | desperate) users may prefer to use 
-% different settings.
-% Please uncomment the following style and use your CSLaTeX (cslatex/pdfcslatex) 
-% to process your work. Note however, this file is in UTF-8 and a conversion to 
-% your native encoding may be required. Some settings below depend on babel 
-% macros and should also be modified. See \selectlanguage \iflanguage.
-%\usepackage{czech}  %%%%%\usepackage[T1]{czech} %%%%[IL2] [T1] [OT1]
-%=-=-=-=-=-=-=-=-=-=-=-=--=%
+\usepackage[T1]{fontenc} 				% pouzije EC fonty 
+\usepackage[utf8]{inputenc} 			% utf8 kódování vstupu 
+\usepackage[square, numbers]{natbib}	% sazba pouzite literatury
+\usepackage{indentfirst} 				% 1. odstavec jako v cestine, pro práci v aj možno zakomentovat
+\usepackage{fancyhdr}					% tisk hlaviček a patiček stránek
+\usepackage{nomencl} 					% umožňuje snadno definovat zkratky a jejich seznam
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Styles required in your work follow %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx}
-%\usepackage{indentfirst} %1. odstavec jako v cestine.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% informace o práci
+\newcommand\WorkTitle{Simulace inhibice zpětného vychytávání pomocí neuronové sítě typu KVAZI-$\omega$}		% název
+\newcommand\FirstandFamilyName{Bc. Cornelius Hron}															% autor
+\newcommand\Supervisor{prof. Ing. Damián Zlo, CSc.}															% vedoucí
 
-\usepackage{k336_thesis_macros} % specialni makra pro formatovani DP a BP
- % muzete si vytvorit i sva vlastni v souboru k336_thesis_macros.sty
- % najdete  radu jednoduchych definic, ktere zde ani nejsou pouzity
- % napriklad: 
- % \newcommand{\bfig}{\begin{figure}\begin{center}}
- % \newcommand{\efig}{\end{center}\end{figure}}
- % umoznuje pouzit prikaz \bfig namisto \begin{figure}\begin{center} atd.
+\newcommand\TypeOfWork{Diplomová práce}	% typ práce [Diplomová práce | Bakalářská práce | Bachelor's Project | Master's Thesis ]	
 
-\usepackage{nomencl} 							% umožňuje snadno definovat zkratky a jejich seznam
-\makenomenclature								% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
-\newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
-\newcommand*{\nom}[2]{#1 \nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : SZ
+% Nastavte následují podle vašeho oboru a programu (pomoc hledejte na http://www.fel.cvut.cz/cz/education/bk/prehled.html)								
+\newcommand\StudProgram{Softwarové technologie a management, Bakalářský}	% program
+\newcommand\StudBranch{Softwarové inženýrství}           					% obor
 
-\makeatletter								% upravuje výpis seznam zkratek
-\renewcommand{\thenomenclature}{%
-  \@ifundefined{chapter}%
-  {
-    \section{\nomname}
-   }%
-  {
-    \chapter{\nomname}
-  }%
-
-  \nompreamble
-  \list{}{%
-    \labelwidth\nom@tempdim
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemsep\nomitemsep
-    \let\makelabel\nomlabel}}
-\makeatother
-
-\usepackage{listings} %slouží pro tisk zdrojových kódů se syntax higlighting
-
-\usepackage{algorithmicx} 	%slouží pro zápis algoritmů
-\usepackage{algpseudocode} 	%slouží pro výpis pseudokódu
-
-\usepackage{fancyhdr}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Zvolte jednu z moznosti 
-% Choose one of the following options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\TypeOfWork{Diplomová práce} \typeout{Diplomova prace}
-% \newcommand\TypeOfWork{Master's Thesis}   \typeout{Master's Thesis} 
-% \newcommand\TypeOfWork{Bakalářská práce}  \typeout{Bakalarska prace}
-% \newcommand\TypeOfWork{Bachelor's Project}  \typeout{Bachelor's Project}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Zvolte jednu z moznosti 
-% Choose one of the following options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% nabidky jsou z: http://www.fel.cvut.cz/cz/education/bk/prehled.html
-
-%\newcommand\StudProgram{Elektrotechnika a informatika, dobíhající, Bakalářský}
-%\newcommand\StudProgram{Elektrotechnika a informatika, dobíhající, Magisterský}
-% \newcommand\StudProgram{Elektrotechnika a informatika, strukturovaný, Bakalářský}
- \newcommand\StudProgram{Elektrotechnika a informatika, strukturovaný, Navazující magisterský}
-% \newcommand\StudProgram{Softwarové technologie a management, Bakalářský}
-% English study:
-% \newcommand\StudProgram{Electrical Engineering and Information Technology}  % bachelor programe
-% \newcommand\StudProgram{Electrical Engineering and Information Technology}  %master program
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Zvolte jednu z moznosti 
-% Choose one of the following options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% nabidky jsou z: http://www.fel.cvut.cz/cz/education/bk/prehled.html
-
-%\newcommand\StudBranch{Výpočetní technika}   % pro program EaI bak. (dobihajici i strukt.)
-\newcommand\StudBranch{Výpočetní technika}   % pro prgoram EaI mag. (dobihajici i strukt.)
-%\newcommand\StudBranch{Softwarové inženýrství}            %pro STM
-%\newcommand\StudBranch{Web a multimedia}                  % pro STM
-%\newcommand\StudBranch{Computer Engineering}              % bachelor programe
-%\newcommand\StudBranch{Computer Science and Engineering}  % master programe
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Vyplnte nazev prace, autora a vedouciho
-% Set up Work Title, Author and Supervisor
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand\WorkTitle{Simulace inhibice zpětného vychytávání pomocí neuronové sítě typu KVAZI-$\omega$}
-\newcommand\FirstandFamilyName{Bc. Cornelius Hron}
-\newcommand\Supervisor{prof. Ing. Damián Zlo, CSc.}
-
-
-% Pouzijete-li pdflatex, tak je prijemne, kdyz bude mit vase prace
-% funkcni odkazy i v pdf formatu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% minimální importy
+\usepackage{graphicx}					% pro vkládání obrázků
+\usepackage{k336_thesis_macros} 		% specialni makra pro formatovani DP a BP
 \usepackage[
-pdftitle={\WorkTitle},
-pdfauthor={\FirstandFamilyName},
-bookmarks=true,
+pdftitle={\WorkTitle},				% nastaví v informacích o pdf název
+pdfauthor={\FirstandFamilyName},	% nastaví v informacích o pdf autora
 colorlinks=true,
 breaklinks=true,
 urlcolor=red,
@@ -150,155 +34,105 @@ citecolor=blue,
 linkcolor=blue,
 unicode=true,
 ]
-{hyperref}
+{hyperref}								% pro zobrazování "prokliknutelných" linků 
 
+% rozšiřující importy
+\usepackage{listings} 			%slouží pro tisk zdrojových kódů se syntax higlighting
+\usepackage{algorithmicx} 		%slouží pro zápis algoritmů
+\usepackage{algpseudocode} 		%slouží pro výpis pseudokódu
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% příkazy šablony
+\makenomenclature								% při překladu zajistí vytvoření pracovního souboru se seznamem zkratek
 
-% Extension posted by Petr Dlouhy in order for better sources reference (\cite{} command) especially in Czech.
-% April 2010
-% See comment over \thebibliography command for details.
-
-\usepackage[square, numbers]{natbib}             % sazba pouzite literatury
-%\usepackage{url}
-%\DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>}\urlstyle{tt}}  %rm/sf/tt
-%\renewcommand{\emph}[1]{\textsl{#1}}    % melo by byt kurziva nebo sklonene,
-\let\oldUrl\url
+\let\oldUrl\url									% url adresy budou zobrazeny: <url> 
 \renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vaše vlastní příkazy
+\newcommand*{\nomExpl}[2]{#2 (#1)\nomenclature{#1}{#2}} 	% usnadňuje zápis zkratek : Slova ke Zkrácení (SZ)
+\newcommand*{\nom}[2]{#1 \nomenclature{#1}{#2}} 			% usnadňuje zápis zkratek : SZ
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vlastní dokument
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	% nastavení jazyka, kterým je práce psána
+	\selectlanguage{czech}	% podle jazyka práce nastavte na [czech | english]
+	\translate				% nastaví české nebo anglické popisy (např. katedra -> department); viz k336_thesis_macros
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Zvolte jednu z moznosti 
-% Choose one of the following options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\selectlanguage{czech}
-%\selectlanguage{english} 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%    
+	% Poznamky ke kompletaci prace
+	% Nasledujici pasaz uzavrenou v {} ve sve praci samozrejme 
+	% zakomentujte nebo odstrante. 
+	% Ve vysledne svazane praci bude nahrazena skutecnym 
+	% oficialnim zadanim vasi prace.
+	{
+	\pagenumbering{roman} \cleardoublepage \thispagestyle{empty}
+	\chapter*{Na tomto místě bude oficiální zadání vaší práce}
+	\begin{itemize}
+		\item Toto zadání je podepsané děkanem a vedoucím katedry,
+		\item musíte si ho vyzvednout na studijním oddělení Katedry počítačů na Karlově náměstí,
+		\item v jedné odevzdané práci bude originál tohoto zadání (originál zůstává po obhajobě na katedře),
+		\item ve druhé bude na stejném místě neověřená kopie tohoto dokumentu (tato se vám vrátí po obhajobě).
+	\end{itemize}
+	\newpage
+	}
 
-% prikaz \typeout vypise vyse uvedena nastaveni v prikazovem okne
-% pro pohodlne ladeni prace
+	%%%%%%%%%%%%%%%%%%%%%%%%%%    
+	% Titulni stranka / Title page 
+	\coverpagestarts
 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+	% Poděkovani / Acknowledgements 
 
-\iflanguage{czech}{
-	 \typeout{************************************************}
-	 \typeout{Zvoleny jazyk: cestina}
-	 \typeout{Typ prace: \TypeOfWork}
-	 \typeout{Studijni program: \StudProgram}
-	 \typeout{Obor: \StudBranch}
-	 \typeout{Jmeno: \FirstandFamilyName}
-	 \typeout{Nazev prace: \WorkTitle}
-	 \typeout{Vedouci prace: \Supervisor}
-	 \typeout{***************************************************}
-	 \newcommand\Department{Katedra počítačů}
-	 \newcommand\Faculty{Fakulta elektrotechnická}
-	 \newcommand\University{České vysoké učení technické v Praze}
-	 \newcommand\labelSupervisor{Vedoucí práce}
-	 \newcommand\labelStudProgram{Studijní program}
-	 \newcommand\labelStudBranch{Obor}
-	 \renewcommand\nomname{Seznam použitých zkratek}
-}{
-	 \typeout{************************************************}
-	 \typeout{Language: english}
-	 \typeout{Type of Work: \TypeOfWork}
-	 \typeout{Study Program: \StudProgram}
-	 \typeout{Study Branch: \StudBranch}
-	 \typeout{Author: \FirstandFamilyName}
-	 \typeout{Title: \WorkTitle}
-	 \typeout{Supervisor: \Supervisor}
-	 \typeout{***************************************************}
-	 \newcommand\Department{Department of Computer Science and Engineering}
-	 \newcommand\Faculty{Faculty of Electrical Engineering}
-	 \newcommand\University{Czech Technical University in Prague}
-	 \newcommand\labelSupervisor{Supervisor}
-	 \newcommand\labelStudProgram{Study Programme} 
-	 \newcommand\labelStudBranch{Field of Study}
-}
+	\acknowledgements
+	\noindent
+	Zde můžete napsat své poděkování, pokud chcete a máte komu děkovat.
 
 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+	% Prohlášení / Declaration 
+
+	\declaration{V~Kořenovicích nad Bečvárkou dne 15.\,5.\,2008}
+	%\declaration{In Kořenovice nad Bečvárkou on May 15, 2008}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%    Poznamky ke kompletaci prace
-% Nasledujici pasaz uzavrenou v {} ve sve praci samozrejme 
-% zakomentujte nebo odstrante. 
-% Ve vysledne svazane praci bude nahrazena skutecnym 
-% oficialnim zadanim vasi prace.
-{
-\pagenumbering{roman} \cleardoublepage \thispagestyle{empty}
-\chapter*{Na tomto místě bude oficiální zadání vaší práce}
-\begin{itemize}
-\item Toto zadání je podepsané děkanem a vedoucím katedry,
-\item musíte si ho vyzvednout na studijním oddělení Katedry počítačů na Karlově náměstí,
-\item v jedné odevzdané práci bude originál tohoto zadání (originál zůstává po obhajobě na katedře),
-\item ve druhé bude na stejném místě neověřená kopie tohoto dokumentu (tato se vám vrátí po obhajobě).
-\end{itemize}
-\newpage
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%    Titulni stranka / Title page 
-
-\coverpagestarts
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%    Podekovani / Acknowledgements 
-
-\acknowledgements
-\noindent
-Zde můžete napsat své poděkování, pokud chcete a máte komu děkovat.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%   Prohlaseni / Declaration 
-
-\declaration{V~Kořenovicích nad Bečvárkou dne 15.\,5.\,2008}
-%\declaration{In Kořenovice nad Bečvárkou on May 15, 2008}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%    Abstract 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+	% Abstrakt / Abstract 
  
-\abstractpage
+	\abstractpage
 
-Translation of Czech abstract into English.
+	Translation of Czech abstract into English.
 
-% Prace v cestine musi krome abstraktu v anglictine obsahovat i
-% abstrakt v cestine.
-\vglue60mm
+	% Prace v cestine musi krome abstraktu v anglictine obsahovat i
+	% abstrakt v cestine.
+	\vglue60mm
 
-\noindent{\Huge \textbf{Abstrakt}}
-\vskip 2.75\baselineskip
+	\noindent{\Huge \textbf{Abstrakt}}
+	\vskip 2.75\baselineskip
 
-\noindent
-Abstrakt práce by měl velmi stručně vystihovat její obsah. Tedy čím se práce zabývá a co je jejím výsledkem/přínosem.
+	\noindent
+	Abstrakt práce by měl velmi stručně vystihovat její obsah. Tedy čím se práce zabývá a co je jejím výsledkem/přínosem.
 
-\noindent
-Očekávají se cca 1 -- 2 odstavce, maximálně půl stránky.
+	\noindent
+	Očekávají se cca 1 -- 2 odstavce, maximálně půl stránky.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Obsah / Table of Contents 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%    
+	% obsahy a seznamy
+	\tableofcontents		% Obsah / Table of Contents 
 
-\tableofcontents
+	% pokud v práci nejsou obrázky nebo tabulky - odstraňte jejich seznam
+	\listoffigures			% Obsah / Table of Contents 
+	\listoftables			% Seznam tabulek / List of Tables
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Seznam obrazku / List of Figures 
-
-\listoffigures
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Seznam tabulek / List of Tables
-
-\listoftables				% pokud v práci nejsou tabulky - odstraňte
-
-
-%**************************************************************
-
-\mainbodystarts
-
-\normalfont
-\parskip=0.2\baselineskip plus 0.2\baselineskip minus 0.1\baselineskip
-
-% Odsazeni prvniho radku odstavce resi class book (neaplikuje se na prvni 
-% odstavce kapitol, sekci, podsekci atd.) Viz usepackage{indentfirst}.
-% Chcete-li selektivne zamezit odsazeni 1. radku nektereho odstavce,
-% pouzijte prikaz \noindent.
-
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	% začátek textu  
+	\mainbodystarts
 
 \chapter{Úvod}
 Úvod charakterizující kontext zadání, případně motivace.
@@ -306,17 +140,13 @@ Očekávají se cca 1 -- 2 odstavce, maximálně půl stránky.
 Výsledná struktura vaší práce a názvy a rozsahy jednotlivých kapitol se samozřejmě budou lišit podle typu práce a podle konkrétní povahy zpracovávaného tématu. Níže uvedená struktura práce odpovídá \textit{práci implementační}, viz \cite{infodp} respektive \cite{infobp}. 
 
 
-\chapter{Jak pracovat s touto šablonou}
 \chapter{Pokyny a návody k formátování textu práce}
-\textbf{\large Tato příloha samozřejmě nebude součástí vaší práce. Slouží pouze jako příklad formátování textu.}
-
 Používat se dají všechny příkazy systému \LaTeX. Existuje velké množství volně přístupné dokumentace, tutoriálů, příruček a dalších materiálů v elektronické podobě. Výchozím bodem, kromě Googlu, může být stránka CSTUG (Czech Tech Users Group) \cite{CSTUG}. Tam najdete odkazy na další materiály.  Vetšinou dostačující a přehledně organizovanou elektronikou dokumentaci najdete například na \cite{latexdocweb} nebo \cite{latexwiki}.
 
 Existují i různé nadstavby nad systémy \TeX{} a \LaTeX, které výrazně usnadní psaní textu zejména začátečníkům. Velmi rozšířený v Linuxovém prostředí je systém Kile.
 
 
-%**************************************************************
-
+%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Pro snadnejsi praci s vetsimi texty je rozumne tyto rozdelit
 % do samostatnych souboru nejlepe dle kapitol a tyto potom vkladat
 % pomoci prikazu \include{jmeno_souboru}.
@@ -324,8 +154,7 @@ Existují i různé nadstavby nad systémy \TeX{} a \LaTeX, které výrazně usn
 % \include{1_uvod}
 % \include{2_teorie}
 % atd...
-
-%*****************************************************************************
+%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \include{obrazky}
 
@@ -381,6 +210,8 @@ R(a,b) & \verb+make_R:A->B->R+ & \verb+a: R -> A+\\
 \end{table}
 \begin{table}
 \end{verbatim}
+
+A pokud máte svá data v CSV můžete použít některou z knihoven nabízených v   http://texblog.org/2012/05/30/generate-latex-tables-from-csv-files-excel/ 
 
 \section{Odkazy v textu}
 \subsection{Odkazy na literaturu}
@@ -565,8 +396,6 @@ V tomto textu používám několik zkratek, třeba 2D\nomenclature{2D}{Two-Dimen
 \section{České uvozovky}
 V souboru \verb|k336_thesis_macros.tex| je příkaz \verb|\uv{}| pro sázení českých uvozovek. \uv{Text uzavřený do českých uvozovek.}
 
-
-%*****************************************************************************
 \chapter{Závěr}
 
 \begin{itemize}
@@ -574,7 +403,7 @@ V souboru \verb|k336_thesis_macros.tex| je příkaz \verb|\uv{}| pro sázení č
 \item Diskuse dalšího možného pokračování práce.
 \end{itemize} 
 
-%*****************************************************************************
+%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Seznam literatury je v samostatnem souboru reference.bib. Ten
 % upravte dle vlastnich potreb, potom zpracujte (a do textu
 % zapracujte) pomoci prikazu bibtex a nasledne pdflatex (nebo
@@ -604,20 +433,9 @@ V souboru \verb|k336_thesis_macros.tex| je příkaz \verb|\uv{}| pro sázení č
 % 3.5.2009 JZ polemizuje: BibTeX neobvinujte, napiste a poskytnete nam styl (.bst) splnujici citacni normu CSN/ISO.
 
 
-\appendix	%vše co následuje bude uvedeno v přílohách
-
-
-% JZ: 3.5.2009 \chapter z book zajistí automaticky
-%\subsection{Začátky kapitol na liché stránky}
-%Ve výsledném textu je dobré, když každá kapitola začíná na liché stránce. Tedy použijte:
-%\begin{verbatim}
-%  \cleardoublepage\include{1_uvod}
-%  \cleardoublepage\include{2_teorie}
-%   atd.\ldots{}
-%\end{verbatim}
-
-
-%*****************************************************************************
+%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% vše co následuje bude uvedeno v přílohách
+\appendix	
 
 \printnomenclature
 \label{apx:zkratky}
